@@ -1,4 +1,4 @@
-Analisi del controllo della qualità delle Read
+Analisi del controllo della qualità delle Reads
 
 ```bash
 #|assembly|
