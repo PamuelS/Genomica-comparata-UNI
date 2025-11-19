@@ -25,5 +25,5 @@ Applicazione del metodo Kmer alle reads che sono risultate paired nel passaggio 
 
 ```bash
 #|kat|
-kat hist -t  -m 27 -o Anoste_kmer27 SRR11672503_1_paired_fastqc.html SRR11672503_2_paired_fastqc.html
+kat hist -t 6 -m 27 -o Anoste_kmer27 SRR11672503_1_paired_fastqc.html SRR11672503_2_paired_fastqc.html
 ```
