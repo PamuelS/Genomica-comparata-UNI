@@ -1,6 +1,8 @@
 # Kmer - Based Genome Survey
+Procedimento iniziale che consente di acquisire le informazioni sullo stato di qualità delle short-reads, ottenute precedentemente mediante il sequenziamento dell'organismo Aopheles stephensis.
 
-Analisi del controllo della qualità delle Reads
+## Controllo qualitativo
+Analisi del controllo della qualità delle Reads.
 
 ```bash
 #|assembly|
