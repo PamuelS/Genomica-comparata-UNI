@@ -48,10 +48,12 @@ assembly-stats Anoste_pol.fasta > Anoste_pol.stats
 ```
 ##### Busco
 ```bash
+#|sequence|
 busco -m geno -l $BUSCO/culicidae_odb12 -c 8 -o Anoste_pol_busco -i Anoste_pol.fasta
 ```
 
 ##### Spectra-cn (KAT)
 ```bash
+#|kat|
  kat comp -t 8 -o Anoste_pol 'SRR11672503_1_paired.fastq SRR11672503_2_paired.fastq' Anoste_pol.fasta
 ```
