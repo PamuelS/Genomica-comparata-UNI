@@ -27,6 +27,9 @@ samtools index Anoste_raw_lr_sorted.bam
 rm Anoste_raw_lr.bam
 ```
 
+>qual'ora si volesse osservare la coverage delle reads sul genoma è possibili eseguire il comando: 
+
+
 
 ### Pulizia dell'assemblaggio
 miglioramento della sequenza del genoma frazie al confronto con le reads mappate precedentemente
