@@ -33,3 +33,19 @@ blobtools create -i Anoste_pol.fasta -b Anoste_pol_sorted.bam -t Anoste_blast.ts
 blobtools view -i Anoste_blob.blobDB.jason -o Anoste
 blobtools plot -i Anoste_blob.blobDB.jason -o Anoste
 ```
+
+
+### Salvataggio dei contigs non contaminati
+Creazione di un file che contiene l'informazione di quali contigs sono stati associati ad *A. stephensis*, in questo caso che sono indicati con il nome "Arthropoda"
+
+``bash
+grep "Arthropoda" Anoste.Anoste_blob.blobDB.table.txt > contig_arthropoda.tsv
+```
+
+
+### Estrazione dei contigs non contaminati in formato fasta
+A questo punto si può associare il file con le informazioni dei contigs non contaminati, con la sequenza del genoma espressa in formato fasta, per completare l'operazione di decontaminazione
+
+```bash
+awk '{ if ((NR>1)&&($0~/^>/)) { printf("\n%s", $0); } else if (NR==1) { printf("%s", $0); } else { printf("\t%s", $0); } }' Anoste_pol.fasta | grep -w -Ff <(cut -f1 contig_arthropoda.tsv) - | tr "\t" "\n" > Anoste_decontaminated.fasta
+```
