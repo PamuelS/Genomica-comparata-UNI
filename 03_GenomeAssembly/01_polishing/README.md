@@ -5,6 +5,7 @@ Di seguito vengono riportati i comnandi e i programmi che sono stati utilizzati 
 ### Mappatura delle reads
 Mappatura delle short reads sul genoma assemblato
 
+>Il codice in questione è stato scritto all'interno del file mapping.sh
 ```bash
 #|assembly|
 minimap2 -ax --MD -t 6 Anoste_raw.fasta SRR11672503_1_paired_fastq SRR11672503_1_paired_fastq > Anoste_raw_sr.sam
