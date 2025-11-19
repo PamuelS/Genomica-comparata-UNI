@@ -1,6 +1,5 @@
 # Kmer - Based Genome Survey
-Procedimento iniziale che consente di acquisire le informazioni sullo stato di qualità delle short-reads, ottenute precedentemente mediante il sequenziamento dell'organismo Aopheles stephensis.
-Per ottenere queste informazioni, vengono esegueite tre operazioni distinte riportate al di sotto.
+Procedimento iniziale che consente di acquisire le informazioni sullo stato di qualità delle short-reads, ottenute precedentemente mediante il sequenziamento dell'organismo Aopheles stephensis.                        Per ottenere queste informazioni, vengono esegueite tre operazioni distinte riportate al di sotto.
 
 
 ## Controllo qualitativo
