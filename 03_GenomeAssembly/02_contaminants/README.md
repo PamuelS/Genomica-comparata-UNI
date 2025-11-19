@@ -38,7 +38,7 @@ blobtools plot -i Anoste_blob.blobDB.jason -o Anoste
 ### Salvataggio dei contigs non contaminati
 Creazione di un file che contiene l'informazione di quali contigs sono stati associati ad *A. stephensis*, in questo caso che sono indicati con il nome "Arthropoda"
 
-``bash
+```bash
 grep "Arthropoda" Anoste.Anoste_blob.blobDB.table.txt > contig_arthropoda.tsv
 ```
 
