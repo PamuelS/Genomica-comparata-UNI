@@ -47,6 +47,7 @@ Verifica delle statistiche inerenti al genoma di i passaggi di pulizia. il contr
 #|assembly|
 assembly-stats Anoste_pol.fasta > Anoste_pol.stats
 ```
+
 ##### Busco
 ```bash
 #|sequence|
