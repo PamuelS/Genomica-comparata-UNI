@@ -43,18 +43,24 @@ hypo -d Anoste_raw.fasta -r @Sr.path -s 227054799 -c 136 -b Anoste_raw_sr_sorted
 Verifica delle statistiche inerenti al genoma di i passaggi di pulizia. il controllo qualitativo è svolto con gli stessi metodi adoperati in precedenza con l'assemblaggio "raw" del genoma.
 
 ##### N50 
+Un metodo utilizzato per verificare la contiguità relativa all'assemblaggio ottenuto. Indica con un numero il quantitativo di contig che rappresentano almeno il 50% del genoma assemlbato.
+
 ```bash
 #|assembly|
 assembly-stats Anoste_pol.fasta > Anoste_pol.stats
 ```
 
 ##### Busco
+Metodo che confronta l'assemblaggio con un dataset di geni relativo al livello tassonomico di nostro interesse. Verifica le sequenze ottenute confrontandole direttamente con i geni presenti in un dato dataset, restituendo un valore in percentuale di delle tipologie di geni ritrovati.
+
 ```bash
 #|sequence|
 busco -m geno -l $BUSCO/culicidae_odb12 -c 8 -o Anoste_pol_busco -i Anoste_pol.fasta
 ```
 
 ##### Spectra-cn (KAT)
+Metodo che restituisce un grafico nel quale vengono confrontate le frequenze dei kmer nelle reads originali con quelle nel genoma assemblato, per stimare la coverage.
+
 ```bash
 #|kat|
 kat comp -t 8 -o Anoste_pol 'SRR11672503_1_paired.fastq SRR11672503_2_paired.fastq' Anoste_pol.fasta
