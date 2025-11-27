@@ -2,7 +2,7 @@
 All'interno di questa cartella vengono affrontate tutte le fasi che si susseguono per assemblare un genoma. 
 I provedimenti svolti possono essere sintetizzati in alcuni passaggi chiave.
 
-- [Assemblaggio contig-level](): creazione dei contig e del consensus, mediante l'utilizzo delle reads.
+- [Assemblaggio contig-level](./00_Assembly_raw): creazione dei contig e del consensus, mediante l'utilizzo delle reads.
   
 - [Pulizia](./01_polishing): rimozione di artefatti ed errori accumulatisi nei passaggi precedenti, tramite l'utilizzo delle short e long reads.
   
