@@ -8,4 +8,4 @@ I provedimenti svolti possono essere sintetizzati in alcuni passaggi chiave.
   
 - [Decontaminazione](./02_contaminants): identificazione e rimozione di sezioni del genoma assemblato associate ad organismi differenti da *A. stephensis*.
   
-- [Assembleggio scaffolding-level](): unione dei contig ottenuti in scaffold
+- [Assembleggio scaffolding-level](./03_Scaffolding): unione dei contig ottenuti in scaffold
