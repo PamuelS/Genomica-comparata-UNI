@@ -1,5 +1,5 @@
 # Decontamination 
-Di seguito vengono riportati i comnandi e i programmi che sono stati utilizzati per la fase di decontaminazione del genoma sequenziato e assemblato.
+Per decontaminanzione del genoma, viene inteso quell'insieme di procedimenti che consentono di individuare ed eliminare le sequenze geniche non appartenenti all'organismo che sto studiando. Di seguito vengono riportati i comnandi e i programmi che sono stati utilizzati per la fase di decontaminazione del genoma sequenziato e assemblato.
 
 
 ### Ri-mappatura delle reads
@@ -14,6 +14,7 @@ samtools index Anoste_pol_sr_sorted.bam
 rm Anoste_pol_sr.bam
 ```
 
+-----
 
 ### Annotazione tassonomica dei contigs
 Viene associata un gruppo tassonomico alle contigs che sono presenti nel genoma, grazie al confronto diretto con la banca dati NCBI
@@ -23,6 +24,7 @@ Viene associata un gruppo tassonomico alle contigs che sono presenti nel genoma,
 blastn -query Anoste_pol.fasta -db <PATH/TO/nt/> -outfmt '6 qseqid staxids bitscore std sscinames sskingdoms stitle' -max_target_seqs 25 -max_hsps 1 -num_threads 25 -evalue 1e-25 -out Anoste_blast.tsv
 ```
 
+-----
 
 ### Individuazione delle contigs contaminate
 Per poter capire quali sono le contigs che non appartengono al genoma di *A. stephensis* utilizzo il programma Blobtools
@@ -34,6 +36,7 @@ blobtools view -i Anoste_blob.blobDB.jason -o Anoste
 blobtools plot -i Anoste_blob.blobDB.jason -o Anoste
 ```
 
+-----
 
 ### Salvataggio dei contigs non contaminati
 Creazione di un file che contiene l'informazione di quali contigs sono stati associati ad *A. stephensis*, in questo caso che sono indicati con il nome "Arthropoda"
@@ -42,6 +45,7 @@ Creazione di un file che contiene l'informazione di quali contigs sono stati ass
 grep "Arthropoda" Anoste.Anoste_blob.blobDB.table.txt > contig_arthropoda.tsv
 ```
 
+-----
 
 ### Estrazione dei contigs non contaminati in formato fasta
 A questo punto si può associare il file con le informazioni dei contigs non contaminati, con la sequenza del genoma espressa in formato fasta, per completare l'operazione di decontaminazione
