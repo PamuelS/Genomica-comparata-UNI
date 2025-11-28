@@ -15,7 +15,9 @@ MAKER è il programma adoperato per eseguire l'annotazione. Per poter essere uti
 ```bash
 maker -CTL
 ```
-Una volta generati i file che consentono a MAKER di lavorare, si procede con la creazione del file .gff, contenente le informazioni relative all'annotazione dei geni. Per la annotazione sono stati forniti al programma informazioni sul proteoma relati
+
+Una volta generati i file che consentono a MAKER di lavorare, si procede con la creazione del file .gff, contenente le informazioni relative all'annotazione dei geni. Per la annotazione sono stati forniti al programma informazioni sul proteoma della specie *A. stephensis*.
+
 ```bash
     #-----Genome (these are always required)
     genome= <GENOME> #genome sequence (fasta file or fasta embeded in GFF3 file)
@@ -93,13 +95,21 @@ Una volta generati i file che consentono a MAKER di lavorare, si procede con la 
     TMP= #specify a directory other than the system default temporary directory for temporary files
 ```
 
------
-
-### Miglioramento del file .gff
-
+il comando riportato di seguito serve per riorganizzare ai directory di lavoro, eliminando i file intermedi creati dal lancio del comando precedente.
 
 ```bash
+maker -base <OUTPUT PREFIX>
+```
 
+-----
+
+### Ricostruzione del file .gff
+Vengono successivamente eseguiti i seguenti comandi per generare il file .gff finale e la sequenza amminoacidica/nucleotidica dei vari geni analizzati.
+>Il file .gff è un file suddiviso in colonne nelle quali sono riportate le infomrazioni associate a ciascuna sequenza nucleotidica riconosciuta dall'algoritmo come sequenza codificante.
+
+```bash
+fasta_merge -d <DATASTORE INDEX FILE>
+gff3_merge -d <DATASTORE INDEX FILE>
 ```
 
 -----
@@ -121,6 +131,7 @@ Una volta generati i file che consentono a MAKER di lavorare, si procede con la 
 ```
 
 -----
+
 
 
 
