@@ -3,10 +3,10 @@ In questa fase si procede con l'assemblaggio del genoma a livello di contig (con
 
 
 ### Assemblaggio contig-level
-Mediante la sovrapposizione delle reads riesco ad ottenere una sequenza univoca.
+Mediante l'allineamento e la sovrapposizione delle long reads si riesce ad ottenere una sequenza univoca del genoma a livello di contig. 
 
 ```bash
-wtdbg2 -x rs -g <EXPECTED_GENOMESIZE> -t <NUMBERS_OF_CORES> -i <FASTQ> -fo Anoste_raw
+wtdbg2 -x rs -g 227054799 -t 8 -i SRR11672506.fastq.gz -fo Anoste_raw
 ```
 
 
