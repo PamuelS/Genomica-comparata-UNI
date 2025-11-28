@@ -1,5 +1,5 @@
 # Polishing
-Di seguito vengono riportati i comnandi e i programmi che sono stati utilizzati per compiere la pulizia del genoma.
+Per "pulizia" del genoma, viene inteso quell'insieme di procedimenti che consentono di individuare ed eliminare le sequenze geniche non appartenenti all'organismo che sto studiando. Di seguito vengono riportati i comnandi e i programmi che sono stati utilizzati per conseguire questo risultato.
 
 
 ### Mappatura delle reads
