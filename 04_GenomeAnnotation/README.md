@@ -10,7 +10,7 @@ In questo progetto il focus è improntato unicamente sulle regioni codificanti d
 -----
 
 ### Generazione dell'annotazione
-MAKER è il programma adoperato per eseguire l'annotazione. Per poter essere utilizzato 
+MAKER è il programma adoperato per eseguire l'annotazione. Per poter essere utilizzato necessita di alcuni file di controllo/opzione che vengono generati con il comando sottostante.
 
 
 ```bash
@@ -45,6 +45,7 @@ maker -CTL
 ```
 
 -----
+
 
 
 
