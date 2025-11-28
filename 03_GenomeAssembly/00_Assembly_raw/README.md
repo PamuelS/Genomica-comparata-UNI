@@ -8,7 +8,7 @@ Mediante l'allineamento e la sovrapposizione delle long reads si riesce ad otten
 ```bash
 wtdbg2 -x rs -g 227054799 -t 8 -i SRR11672506.fastq.gz -fo Anoste_raw
 ```
-
+-----
 
 ### Creazione del consensus 
 Riordinamento dei contig ottenuti con il passaggio precedente, per creare la sequenza di consensus ovvero l'insieme di contig correttamente disposti.
@@ -16,7 +16,7 @@ Riordinamento dei contig ottenuti con il passaggio precedente, per creare la seq
 ```bash
 wtpoa-cns -t <NUMBER_OF_CORES> -i <LAYOUT_FILE-.ctg.lay.gz> -fo <OUT_PREFIX>
 ```
-
+-----
 
 ### Controllo qualitativo
 Controllo della qualità della sequenza di consensus appena ottenuta. Il controllo è stato eseguito tramite tre metodi differenti ovvero: 
