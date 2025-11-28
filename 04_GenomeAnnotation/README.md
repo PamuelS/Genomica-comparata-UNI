@@ -3,25 +3,23 @@ L'annotazione rappresenta la fase che segue l'assemblaggio di un genoma, ed è i
 Per l'annotazione vengono utilizzati degli strumenti, come SNAP e Augustus, ovvero dei software addestrati per associare le regioni codificanti a geni già noti (predizione genica).
 Questo passaggio solitamente viene eseguito a round, dato che ogni round successivo consente agli algoritmi di migliorare progressivamente la predittività, migliorando di conseguenza l'identificazione dei geni.
 
-### Annotazione di elementi trasponibili
-
-
-```bash
-
-```
+### Annotazione di elementi ripetuti
+In questo progetto il focus è improntato unicamente sulle regioni codificanti del genoma, quindi risulta necessario andare prima ad identificare, per poi successivamente nascondere, tutti quegli elementi classificati come "ripetitive elements" perchè presentano delle strutture differenti dalle regioni codificanti.
+>Per gli elementi ripetuti si utilizzano programmi come RepeatModeler oppure RepeatMasker.
 
 -----
 
 ### Generazione dell'annotazione
+MAKER è il programma adoperato per eseguire l'annotazione. Per poter essere utilizzato 
 
 
 ```bash
-
+maker -CTL
 ```
 
 -----
 
-### Costruzione del file .gff
+### Miglioramento del file .gff
 
 
 ```bash
@@ -47,5 +45,6 @@ Questo passaggio solitamente viene eseguito a round, dato che ogni round success
 ```
 
 -----
+
 
 
