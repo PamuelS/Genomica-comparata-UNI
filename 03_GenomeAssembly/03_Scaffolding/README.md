@@ -13,7 +13,7 @@ ragtag.py correct -t 20 <REFERENCE_GENOME> <DRAFT_GENOME>
 -----
 
 ### Assemblaggio scaffold-level
-
+Una volta eseguito il passaggio precedente, si può proseguire con la creazione degli scuffold. 
 
 ```bash
 ragtag.py scaffold -C -t 20 -o <OUTPUT_DIR> <REFERENCE_GENOME> <CORRECTED_DRAFTGENOME>
