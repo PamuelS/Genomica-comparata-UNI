@@ -28,6 +28,7 @@ samtools index Anoste_raw_lr_sorted.bam
 rm Anoste_raw_lr.bam
 ```
 
+-----
 
 ### Pulizia dell'assemblaggio
 Miglioramento della sequenza del genoma frazie al confronto con le reads mappate precedentemente
@@ -38,6 +39,7 @@ echo e- "$R1\n$R2" > Sr.path
 hypo -d Anoste_raw.fasta -r @Sr.path -s 227054799 -c 136 -b Anoste_raw_sr_sorted.bam -B Anoste_raw_lr_sorted.bam -t 6 
 ```
 
+-----
 
 ### Controllo qualità del genoma pulito
 Verifica delle statistiche inerenti al genoma di i passaggi di pulizia. il controllo qualitativo è svolto con gli stessi metodi adoperati in precedenza con l'assemblaggio "raw" del genoma.
