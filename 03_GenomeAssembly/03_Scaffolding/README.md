@@ -13,7 +13,7 @@ ragtag.py correct -t 20 <REFERENCE_GENOME> <DRAFT_GENOME>
 -----
 
 ### Assemblaggio scaffold-level
-Una volta eseguito il passaggio precedente, si può proseguire con la creazione degli scuffold. 
+Una volta eseguito il passaggio precedente, si può proseguire con la creazione degli scuffold. Questo programma consente l'unione di più contig strutturalmente vicini all'interno di un'unica sequenza.
 
 ```bash
 ragtag.py scaffold -C -t 20 -o <OUTPUT_DIR> <REFERENCE_GENOME> <CORRECTED_DRAFTGENOME>
