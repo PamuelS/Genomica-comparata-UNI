@@ -129,8 +129,16 @@ I software impiegti sono:
 ### Riassunto del procedimento e Ulteriori round
 Il procdiemnto di annotazione è un passaggio estremamente lungo, ma che rappresenta uno dei passaggi chiave durante il procedimento di assemllaggio di un genoma.
 
-I passaggi fondamentali possono essere sintetizzati in alcuni punti chiave:
-1.
+I passaggi fondamentali possono essere sintetizzati in alcuni punti chiave :
+
+1. Annotazione di elementi ripetuti nel genoma
+2. Utilizzo di informazioni esterne (es. proteoma) per migliorare la predittività
+3. estrazione di un set iniziale di modelli genetici altamente affidabili (es. SNAP e AUGUSTUS)
+4. allenamento dei software per la predizione genica
+5. Esecuziione di ulteriori round (devono essere eseguiti nuovamente i passaggi 3 e 4) per migliorare i successi di predizione
+6. Creazione di un insieme di consenso de i risulati ottenuti
+7. Valutazionde del lavoro ottenuto
 
 -----
+
 
