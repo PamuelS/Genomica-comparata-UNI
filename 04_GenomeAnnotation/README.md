@@ -121,8 +121,6 @@ Come accenntato in precedenza, il processo di predizione genica è eseguito inte
 I software impiegti sono:
 -SNAP
 -Augustus 
->-
->-blblblbb
 
 -----
 
@@ -134,6 +132,7 @@ I software impiegti sono:
 ```
 
 -----
+
 
 
 
