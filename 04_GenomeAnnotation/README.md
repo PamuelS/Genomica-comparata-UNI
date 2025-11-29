@@ -119,8 +119,8 @@ gff3_merge -d <DATASTORE INDEX FILE>
 ### Predizione genica
 Come accenntato in precedenza, il processo di predizione genica è eseguito intermanete da due software altamente specializzati nell'identificazione di sequenze codificanti all'interno di genomi.
 I software impiegti sono:
--SNAP
--Augustus 
+- SNAP
+- Augustus 
 
 -----
 
@@ -132,6 +132,7 @@ I software impiegti sono:
 ```
 
 -----
+
 
 
 
