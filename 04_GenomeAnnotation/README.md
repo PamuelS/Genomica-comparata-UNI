@@ -120,8 +120,9 @@ gff3_merge -d <DATASTORE INDEX FILE>
 Come accenntato in precedenza, il processo di predizione genica è eseguito intermanete da due software altamente specializzati nell'identificazione di sequenze codificanti all'interno di genomi.
 
 I software impiegti sono:
-- [SNAP](https://github.com/KorfLab/SNAP.git)
-- Augustus 
+- [SNAP](https://github.com/KorfLab/SNAP.git) (Semi-HMM-based Nucleic Acid Parser) è un programma di ricerca genetica generico adatto sia per genomi eucariotici che procariotici. Questo software può essere allenato utilizzando una serie di modelli genetici noti, in modo tale da migliorare la qualità della annotazione. 
+- Augustus(https://github.com/Gaius-Augustus/Augustus.git) è un programma di predizione genica che può essere utilizzato come un programma Ab initio.Come per il programma precedente, può essere allenato.
+>I programmi Ab initio non sono altro che modelli predittivi che non si basano sulla somiglianza con sequenze di geni noti, ma fanno affidamento unicamente sulla sequenza di DNA e sui modelli statistici dei geni(non si basano sull'evidenza della sequenza).
 
 -----
 
@@ -133,6 +134,7 @@ I software impiegti sono:
 ```
 
 -----
+
 
 
 
