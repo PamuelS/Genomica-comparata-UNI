@@ -106,7 +106,7 @@ maker -base <OUTPUT PREFIX>
 -----
 
 ### Ricostruzione del file .gff
-Vengono successivamente eseguiti i seguenti comandi per generare il file .gff finale e la sequenza amminoacidica/nucleotidica dei vari geni analizzati.
+Vengono successivamente eseguiti i seguenti comandi per generare il file .gff finale e la sequenza amminoacidica/nucleotidica dei vari geni analizzati. Questo comando risulta importante perchè consente di estrarre le informazioni dai vari file creati da MAKER e di inserirli all'interno di un unico file adoperabile in futuro.
 >Il file .gff è un file suddiviso in colonne nelle quali sono riportate le infomrazioni associate a ciascuna sequenza nucleotidica riconosciuta dall'algoritmo come sequenza codificante.
 
 ```bash
@@ -117,11 +117,12 @@ gff3_merge -d <DATASTORE INDEX FILE>
 -----
 
 ### Predizione genica
-
-
-```bash
-
-```
+Come accenntato in precedenza, il processo di predizione genica è eseguito intermanete da due software altamente specializzati nell'identificazione di sequenze codificanti all'interno di genomi.
+I software impiegti sono:
+-SNAP
+-Augustus 
+>-
+>-blblblbb
 
 -----
 
@@ -133,6 +134,7 @@ gff3_merge -d <DATASTORE INDEX FILE>
 ```
 
 -----
+
 
 
 
