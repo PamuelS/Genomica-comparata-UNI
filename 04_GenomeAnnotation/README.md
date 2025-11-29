@@ -126,28 +126,10 @@ I software impiegti sono:
 
 -----
 
-### Round ulteriori
+### Riassunto del procedimento e Ulteriori round
+Il procdiemnto di annotazione è un passaggio estremamente lungo, ma che rappresenta uno dei passaggi chiave durante il procedimento di assemllaggio di un genoma.
 
-
-```bash
-
-```
+I passaggi fondamentali possono essere sintetizzati in alcuni punti chiave:
+1)
 
 -----
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
