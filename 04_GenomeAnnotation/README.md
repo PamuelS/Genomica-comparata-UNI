@@ -6,7 +6,7 @@ Per l'annotazione vengono utilizzati degli strumenti, come SNAP e Augustus, ovve
 Questo passaggio solitamente viene eseguito a round, dato che ogni round successivo consente agli algoritmi di migliorare progressivamente la predittività, migliorando di conseguenza l'identificazione dei geni.
 
 ### Annotazione di elementi ripetuti
-In questo progetto il focus è improntato unicamente sulle regioni codificanti del genoma, quindi risulta necessario andare prima ad identificare, per poi successivamente nascondere, tutti quegli elementi classificati come "ripetitive elements" perchè presentano delle strutture differenti dalle regioni codificanti.
+In questo progetto il focus è improntato unicamente sulle regioni codificanti del genoma, quindi risulta necessario andare prima ad identificare, per poi successivamente nascondere, tutti quegli elementi classificati come "ripetitive elements", dato che presentano delle strutture differenti dalle regioni codificanti.
 >Per gli elementi ripetuti si utilizzano programmi come RepeatModeler oppure RepeatMasker.
 
 -----
@@ -133,6 +133,7 @@ gff3_merge -d <DATASTORE INDEX FILE>
 ```
 
 -----
+
 
 
 
