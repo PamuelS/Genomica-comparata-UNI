@@ -130,6 +130,7 @@ I software impiegti sono:
 Il procdiemnto di annotazione è un passaggio estremamente lungo, ma che rappresenta uno dei passaggi chiave durante il procedimento di assemllaggio di un genoma.
 
 I passaggi fondamentali possono essere sintetizzati in alcuni punti chiave:
-1)
+1.
 
 -----
+
