@@ -97,7 +97,7 @@ Una volta generati i file che consentono a MAKER di lavorare, si procede con la 
     TMP= #specify a directory other than the system default temporary directory for temporary files
 ```
 
-il comando riportato di seguito serve per riorganizzare ai directory di lavoro, eliminando i file intermedi creati dal lancio del comando precedente.
+il comando riportato di seguito serve per riorganizzare la directory di lavoro, eliminando i file intermedi creati dal lancio del comando precedente.
 
 ```bash
 maker -base <OUTPUT PREFIX>
@@ -133,6 +133,7 @@ gff3_merge -d <DATASTORE INDEX FILE>
 ```
 
 -----
+
 
 
 
