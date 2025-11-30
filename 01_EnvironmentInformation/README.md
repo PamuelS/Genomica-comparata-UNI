@@ -2,12 +2,17 @@
 Questa cartella è stata creata per consentire di avere un quadro generale sulla corretta collocazione dei molteplici programmi utilizzati, all'interno del loro specifico environment.
 
 -----
+## Cambio di environment
+Il passaggio da un environment ad un altro può essere eseguito in qualsiasi istante mediante un semplice comando.
+```bash
+conda activate <environment chosen>
+```
 
-## base
+### base
 
 - R             4.5.1
 
-## tree
+### tree
 
 - cafe          5.1.0
 - disco         1.4.1
@@ -21,7 +26,7 @@ Questa cartella è stata creata per consentire di avere un quadro generale sulla
 - raxml-ng      1.2.2
 - treeswift     1.1.45
 
-## sequence
+### sequence
 
 Python too high for orthofinder
 
@@ -34,7 +39,7 @@ Python too high for orthofinder
 - ncbi-datasets 18.3.1
 - SRA-tools     3.2.1
 
-## assembly
+### assembly
 
 python 3.13.5
 
@@ -56,4 +61,5 @@ python 3.13.5
 ## kat
 
 - kat           2.4.2
+
 
