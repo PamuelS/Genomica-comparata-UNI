@@ -64,9 +64,10 @@ python 3.13.5
 - spades         4.2.0
 - trimmomatic    0.40
 
-## kat
+### kat
 
 - kat           2.4.2
+
 
 
 
