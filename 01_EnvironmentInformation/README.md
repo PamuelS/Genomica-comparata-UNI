@@ -1,5 +1,5 @@
 # Environment Information 
-Questa cartella è stata creata per consentire di avere un quadro generale sulla corretta collocazione dei molteplici programmi utilizzati, all'interno del loro specifico environment.
+Questa cartella è stata creata per consentire di avere un quadro generale sulla corretta collocazione dei molteplici programmi utilizzati, all'interno del loro specifico ambiente di lavoro.
 
 -----
 ## Cambio di environment
@@ -67,6 +67,7 @@ python 3.13.5
 ### kat
 
 - kat           2.4.2
+
 
 
 
