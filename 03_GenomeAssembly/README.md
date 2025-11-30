@@ -1,6 +1,7 @@
 # Genome Assembly
 All'interno di questa cartella vengono affrontate tutte le fasi che si susseguono per assemblare un genoma. 
-I provedimenti svolti possono essere sintetizzati in alcuni passaggi chiave.
+
+I procedimenti svolti sono stati sintetizzati all'interno di quattro passaggi fondamentali.
 
 - [Assemblaggio contig-level](./00_Assembly_raw): creazione dei contig e del consensus, mediante l'utilizzo delle reads.
   
