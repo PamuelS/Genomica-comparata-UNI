@@ -8,6 +8,12 @@ Il passaggio da un environment ad un altro può essere eseguito in qualsiasi ist
 conda activate <environment chosen>
 ```
 
+-----
+
+## Tiopologie di environment scelti
+Di seguito sono riportati tutti gli environment (indicati in grassetto) riportanti all'interno tutti i programmi che vi sono stati riposti.
+
+
 ### base
 
 - R             4.5.1
@@ -61,5 +67,6 @@ python 3.13.5
 ## kat
 
 - kat           2.4.2
+
 
 
