@@ -14,8 +14,7 @@ wtdbg2 -x rs -g 227054799 -t 8 -i SRR11672506.fastq.gz -fo Anoste_raw
 Riordinamento dei contig ottenuti con il passaggio precedente, per creare la sequenza di consensus ovvero l'insieme di contig correttamente disposti.
 
 ```bash
-wtpoa-cns -t <NUMBER_OF_CORES> -i <LAYOUT_FILE-.ctg.lay.gz> -fo <OUT_PREFIX>
-```
+wtpoa-cns -t 7 -i Anoste_raw.ctg.lay.gz -fo Anoste_raw
 -----
 
 ### Controllo qualitativo
