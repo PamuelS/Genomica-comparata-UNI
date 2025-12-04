@@ -1,6 +1,7 @@
 # Dataset
-Per la costuzione del dataset sono state scelte cinque specie, tutte appartenenti alla famiglia Culicidae, facenti parte però di tribù differenti.
+Per poter rispondere alla domanda biologica alla quale ero interessato, è stato costruito un dataset all'interno del qaule sono state selezionate cinque specie differenti, ognuna appartenente alla famiglia Culicidae, ma con collocazione differente all'interno delle varie tribù che la compongono.
 
+Di seguito è riportata una rappresentazione delle informazioni raccolte per il dataset:
 
 | Accession number | Nome specie | ID | Tribù |
 | --- | --- | --- | --- |
