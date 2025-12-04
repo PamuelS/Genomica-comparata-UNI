@@ -10,3 +10,6 @@ Di seguito è riportata una rappresentazione delle informazioni raccolte per il 
 | GCF_030247185.1 | Malaya_genurostris | Malgen | Sabethini
 | GCF_029784135.1 | Toxorhynchites_rutilus | Toxrut | Toxorhynchitini |
 | GCF_029784155.1 | Uranotaenia_lowii | Uralow | Uranotaeniini |
+
+>"Accession number" rappresenta l'identificativo in baca dati NCBI di una sequenza specifica associata ad una specie
+
