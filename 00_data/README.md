@@ -38,14 +38,23 @@ Ad ogni gene possono essere associate molteplici isoforme, quindi con questo com
 for gff in *.gff; do agat_sp_keep_longest_isoform.pl --gff "$gff"-o ${gff/.gff/_longest.gff}; done
 ```
 
-#### Eliminazione pseudogeni
-All'interno dei genomi scaricati dalla bancadati, potrebbero essere presenti delle sequenze riconosciute come pseudogeni. Queste determinate sequenze vengono rimosse con il seguente comando, dato che non rappresentano CDS (Coding DNA Sequencing)
->Uno pseudogene viene solitamente identificato dentro un file, grazie alla presenza del simbolo * all'interno della sequenza
+#### Creazione del Proteoma
+Mediante i dati ottenuti, vengono creati i proteomi per ognuna delle specie. Questo comando consente di estrarre le sequenze associate ad ogni gene e di tradurle sotto forma di amminoacido.
+
 ```bash
 for gff in *_longest.gff; do agat_sp_extract_sequences.pl -g "$gff" -f ../00_genome/${gff/_longest.gff/.fna} -t cds -p --cfs --output ../02_Proteome/${gff/_longest.gff/.faa}; done
 ```
 
+#### Eliminazione pseudogeni
+All'interno dei genomi scaricati dalla bancadati, potrebbero essere presenti delle sequenze riconosciute come pseudogeni. Queste determinate sequenze vengono rimosse con il seguente comando, dato che non rappresentano CDS (Coding DNA Sequencing)
+>Uno pseudogene viene solitamente identificato dentro un file, grazie alla presenza del simbolo * all'interno della sequenza
+
+```bash
+bash ../../99_scripts/pseudogene_find_eliminate.sh
+```
+
 #### Modifica dell'intestazione 
+Per rendere il file dei proteomi più chiaro e per prepararlo alle successive operazioni, viene modificata l'intestazioine (header) per ciascun gene che ritroviamo nella specie.
 
 ```bash
 for prot in *.faa; do ID=$(basename -s .faa "$prot"); sed -i.old -E "s/>(rna-XM_[0-9]+\.[0-9]) (gene=gene-.[^ ]+) name=(.[^ ]+) .+$/>${ID}\|\3/" "$prot"; done
