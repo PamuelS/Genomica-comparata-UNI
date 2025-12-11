@@ -26,6 +26,7 @@ Estrazione del CDS dal .gff appna creato (_longest.gff) con successiva traduzion
 for gff in *_longest.gff; do agat_sp_extract_sequences.pl -g "$gff" -f ../00_genome/${gff/_longest.gff/.fna} -t cds -p --cfs --output ../02_Proteome/${gff/_longest.gff/.faa}; done
 ```
 >.fna file contenente una sequenza di nucleotidi
+
 >.faa file contenente una sequenza di amminoacidi
 
 #### Eliminazione degli pseudogeni
@@ -41,4 +42,5 @@ for prot in *.faa; do ID=$(basename -s .faa "$prot"); sed -i.old -E "s/>(rna-XM_
 ```
 
 -----
+
 
