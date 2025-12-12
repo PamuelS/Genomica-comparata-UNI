@@ -61,11 +61,18 @@ Pulizia del file Resolved_Gene_Tree.txt (contiene il nome dell'ortogruppo e l'al
 while IFS=' ' read -r OG tree; do python3 /home/STUDENTI/samuel.pederzini/ Genomica-comparata-UNI/99_scripts/disco.py -i <(echo "$tree") -o ../../../01_DISCO/${OG/:/}.nwk -d "|" -m 4 --remove_in_paralogs --keep-labels --verbose >> ../../../01_DISCO/disco.log; done < <(sed -E 's/[A-Z][a-z]{5}_//g; s/\)n[0-9]*+/\)/g' Resolved_Gene_Trees.txt)
 ```
 #### Eliminazione di alberi vuoti
+Rimozione di possibili "alberi" vuoti creatisi in precedenza.
+
 ```bash
 find . -size 0 -print > empty_disco.txt
 find . -size 0 -delete
 ```
+>.nwk file contenente l'albero filogenetico
+
+#### 
+
 
 ```bash
 bash ../../99_scripts/split_disco_output.sh /home/STUDENTI/samuel.pederzini/Genomica-comparata-UNI/05_OG.Inference_Phylogenomic/OrthoFinder/Results_Dec01/Orthogroup_Sequences
 ```
+
