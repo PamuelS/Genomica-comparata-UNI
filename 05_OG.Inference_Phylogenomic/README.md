@@ -87,25 +87,33 @@ bash ../../99_scripts/split_disco_output.sh /home/STUDENTI/samuel.pederzini/Geno
 Per proseguire con la costruzione dell'albero filogenetico, è necessario prima eseguire alcuni procedimenti per poter garantire una migliore inferenza dell'albero. Questi passaggi corrispondono alla fasi di allineamento e di successivo trimming.
 
 ### Creazione del file dell'albero
-Vengono selezionati i file che verranno usati per l'inferenza sull'albero delle specie, ovvero i file ottenuti qualche [passaggio prima](. Creazione dei singoli ortogruppi)
+Vengono selezionati i file che verranno usati per l'inferenza sull'albero delle specie, ovvero i file ottenuti nel passaggio "Creazione dei singoli ortogruppi".
 ```bash
 ls *.fa | shuf -n 200 > species_tree_OG.txt
 ```
+>Per questo esempio sono stati scelti in maniera random soltanto 200 file dei vari ortogruppi
+
 ### Allineamento delle sequenze
+Allineamento delle sequenze di ogni ortogruppo, per poter osservare il quantitativo di variazioni a livello amminoacidico di ogni gene rispetto agli geni appartenenti al medesimo ortogruppo.
 ```bash
 for OG in $(cat species_tree_OG.txt); do mafft —auto —anysimbol "$OG" ../../../03_aligned/${OG/.fa/_aligned.faa}; done
 ```
 
 ### Trimming delle sequenze
+La fase di trimming può essere eseguita solamente dopo aver compiuto l'allineamento. Ha lo scopo di eliminare e pulire le sequenze che risultano sbaglliate dopo l'allineamento.
 ```bash
 for OG in *; do bmge -i "$OG" -t AA -m BLOSUM62 -e 0.5 -g 0.4 -of ../04_trimmed/${OG/_aligned.faa/_trimmed.faa}; done
 ```
 
 ### Concatenazione
-
+A questo punto vengono unite tutte le sequenze (già allineate e trimmate), ritrovate in ogni singolo ortogruppo, in quello che rappresenta un grande ed unico allineamento. Questo viene eseguito dal comando AMAS.py
 ```bash
-
+../../../99_scripts/AMAS.py concat -y nexus -i *.faa -f fasta -d aa -t conc_species_tree
 ```
 
 ### Costruzione albero
+Ora si posseggono tutti gli input per poter avviare l'analisi filogenetica per la costruzione dell'albero delle specie. In questo caso è stato usato il programma iqtree, che andrà ad utilizzare come dati proprio le sequenze derivanti dal concatenamento.
+```bash
+iqtree -m TESTNEW -b 100 -s conc_species_tree —prefix species_tree -nt 9
+```
 
