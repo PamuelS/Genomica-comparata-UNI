@@ -87,7 +87,7 @@ bash ../../99_scripts/split_disco_output.sh /home/STUDENTI/samuel.pederzini/Geno
 Per proseguire con la costruzione dell'albero filogenetico, è necessario prima eseguire alcuni procedimenti per poter garantire una migliore inferenza dell'albero. Questi passaggi corrispondono alla fasi di allineamento e di successivo trimming.
 
 ### Creazione del file dell'albero
-Vengono selezionati i file che verranno usati per l'inferenza sull'albero delle specie, ovvero i file ottenuti qualche [passaggio prima](### Creazione dei singoli ortogruppi)
+Vengono selezionati i file che verranno usati per l'inferenza sull'albero delle specie, ovvero i file ottenuti qualche [passaggio prima](. Creazione dei singoli ortogruppi)
 ```bash
 ls *.fa | shuf -n 200 > species_tree_OG.txt
 ```
@@ -108,3 +108,4 @@ for OG in *; do bmge -i "$OG" -t AA -m BLOSUM62 -e 0.5 -g 0.4 -of ../04_trimmed/
 ```
 
 ### Costruzione albero
+
