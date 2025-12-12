@@ -13,7 +13,7 @@ Sostanzialmente l'esecuzione di questo passaggio può essere riassunto in alcuni
 ## Gestione e pulizia delle sequenze
 Questo passaggio rappresenta un punto importante nel workflow perchè è utile per il miglioramento delle sequenze relative ad ogni specie, consentendo di avere una informazione più chiara e precisa da fornire ai successivi programmi (es. Orthofinder)
 
-#### Isoforma più lunga
+### Isoforma più lunga
 Per ogni gene vengono eliminate tutte le isoforme associate ad esso, al di fuori dell'isoforma più lunga.
 
 ```bash
@@ -31,14 +31,14 @@ for gff in *_longest.gff; do agat_sp_extract_sequences.pl -g "$gff" -f ../00_gen
 
 >.faa file contenente una sequenza di amminoacidi
 
-#### Eliminazione degli pseudogeni
+### Eliminazione degli pseudogeni
 Per ciascuna sequenza di ogni specie, venogno eliminati gli pseufogeni, dato che il focus del lavoro è totalmente incentrato sulle sequenze codificanti.
 
 ```bash
 bash ../../99_scripts/pseudogene_find_eliminate.sh
 ```
 
-#### Miglioramento della forma
+### Miglioramento della forma
 A questo punto si procede con la modifica dell'header per facilitare le operazioni successive e per rendere più leggibile l'output.
 
 ```bash
@@ -54,7 +54,7 @@ orthofinder -t 8 -a 8 -f .
 ```
 >Il programma Orthofinder restituisce come output molteplici cartelle contenenti varie informazioni sui dati ottenuti
 
-#### Eliminazione di Geni Paraloghi
+### Eliminazione di Geni Paraloghi
 Pulizia del file Resolved_Gene_Tree.txt (contiene il nome dell'ortogruppo e l'albero associato) dalla presenza di eventuali geni paraloghi oppure duplicazioni, mediante l'utilizzo di "disco.py". Inoltre grazie al comando "sed" vengono modificati glie header delle specie per poter renderli accessibili da disco.
 >Separazione di geni paraloghi da quelli ortologhi trovati con Orthofinder
 ```bash
@@ -63,7 +63,7 @@ while IFS=' ' read -r OG tree; do python3 /home/STUDENTI/samuel.pederzini/ Genom
 >.nwk file contenente l'albero filogenetico
 
 
-#### Eliminazione di alberi vuoti
+### Eliminazione di alberi vuoti
 Rimozione di possibili "alberi" vuoti creatisi in precedenza.
 
 ```bash
@@ -71,11 +71,12 @@ find . -size 0 -print > empty_disco.txt
 find . -size 0 -delete
 ```
 
-#### Associazione dei FASTA 
+### Associazione dei FASTA 
 
 
 ```bash
 bash ../../99_scripts/split_disco_output.sh /home/STUDENTI/samuel.pederzini/Genomica-comparata-UNI/05_OG.Inference_Phylogenomic/OrthoFinder/Results_Dec01/Orthogroup_Sequences
 ```
+
 
 
