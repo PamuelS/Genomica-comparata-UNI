@@ -49,6 +49,9 @@ for prot in *.faa; do ID=$(basename -s .faa "$prot"); sed -i.old -E "s/>(rna-XM_
 
 ## Inferenza di Ortologia
 A questo punto si può procedere con la creazione dei potenziali ortogruppi identificati dal programma Orthofinder. La ricerca e l'identificazione dei geni ortologhi parte proprio dall'imput dei proteomi "puliti".
+
+### Identificazione di ortogruppi
+Con questo comando si esegui il primo passaggio per la ricostruzione dei rapporti di ortologia tra i vari geni delle specie del dataset. Viene restituita una serie di informazioni riguardanti l'ortologia, l'albero dei geni e l'albero delle soecie.
 ```bash
 orthofinder -t 8 -a 8 -f .
 ```
@@ -71,12 +74,37 @@ find . -size 0 -print > empty_disco.txt
 find . -size 0 -delete
 ```
 
-### Associazione dei FASTA 
-
+### Creazione dei singoli ortogruppi
+Lo script utilizzato serve per estrarre dal file di disco, tutti gli alberi filogenetici e li inserisce all'interno di singoli file, associandoci anche la corrsipettiva sequenza amminoacidica.
 
 ```bash
 bash ../../99_scripts/split_disco_output.sh /home/STUDENTI/samuel.pederzini/Genomica-comparata-UNI/05_OG.Inference_Phylogenomic/OrthoFinder/Results_Dec01/Orthogroup_Sequences
 ```
 
+-----
 
+## Creazione dell'Albero delle specie
+Per proseguire con la costruzione dell'albero filogenetico, è necessario prima eseguire alcuni procedimenti per poter garantire una migliore inferenza dell'albero. Questi passaggi corrispondono alla fasi di allineamento e di successivo trimming.
 
+### Creazione del file dell'albero
+Vengono selezionati i file che verranno usati per l'inferenza sull'albero delle specie, ovvero i file ottenuti qualche [passaggio prima](### Creazione dei singoli ortogruppi)
+```bash
+ls *.fa | shuf -n 200 > species_tree_OG.txt
+```
+### Allineamento delle sequenze
+```bash
+for OG in $(cat species_tree_OG.txt); do mafft —auto —anysimbol "$OG" ../../../03_aligned/${OG/.fa/_aligned.faa}; done
+```
+
+### Trimming delle sequenze
+```bash
+for OG in *; do bmge -i "$OG" -t AA -m BLOSUM62 -e 0.5 -g 0.4 -of ../04_trimmed/${OG/_aligned.faa/_trimmed.faa}; done
+```
+
+### Concatenazione
+
+```bash
+
+```
+
+### Costruzione albero
