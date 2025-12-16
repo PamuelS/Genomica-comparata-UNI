@@ -87,7 +87,7 @@ bash ../../99_scripts/split_disco_output.sh /home/STUDENTI/samuel.pederzini/Geno
 Per proseguire con la costruzione dell'albero filogenetico, è necessario prima eseguire alcuni procedimenti per poter garantire una migliore inferenza dell'albero. Questi passaggi corrispondono alla fasi di allineamento e di successivo trimming.
 
 ### Creazione del file dell'albero
-Vengono selezionati i file che verranno usati per l'inferenza sull'albero delle specie, ovvero i file ottenuti nel passaggio "Creazione dei singoli ortogruppi".
+Vengono selezionati i file che verranno usati per l'inferenza sull'albero delle specie. Questi file vengono estratti proprio dalla cartella "Single_Copy_Orthologue_Sequences" creatasi dopo il lancio di Orthofinder.
 ```bash
 ls *.fa | shuf -n 200 > species_tree_OG.txt
 ```
@@ -119,5 +119,6 @@ Ora si posseggono tutti gli input per poter avviare l'analisi filogenetica per l
 #|tree|
 iqtree -m TESTNEW -b 100 -s conc_species_tree —prefix species_tree -nt 9
 ```
+
 
 
