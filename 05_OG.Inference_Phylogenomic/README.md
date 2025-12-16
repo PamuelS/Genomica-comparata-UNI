@@ -97,7 +97,7 @@ ls *.fa | shuf -n 200 > species_tree_OG.txt
 Allineamento delle sequenze di ogni ortogruppo, per poter osservare il quantitativo di variazioni a livello amminoacidico di ogni gene rispetto agli geni appartenenti al medesimo ortogruppo.
 ```bash
 #|sequence|
-for OG in $(cat species_tree_OG.txt); do mafft —auto —anysimbol "$OG" ../../../03_aligned/${OG/.fa/_aligned.faa}; done
+for OG in $(cat species_tree_OG.txt); do mafft --auto --anysimbol "$OG" > ../../../03_aligned/${OG/.fa/_aligned.faa}; done
 ```
 
 ### Trimming delle sequenze
@@ -119,6 +119,7 @@ Ora si posseggono tutti gli input per poter avviare l'analisi filogenetica per l
 #|tree|
 iqtree -m TESTNEW -b 100 -s conc_species_tree —prefix species_tree -nt 9
 ```
+
 
 
 
