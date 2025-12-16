@@ -96,12 +96,14 @@ ls *.fa | shuf -n 200 > species_tree_OG.txt
 ### Allineamento delle sequenze
 Allineamento delle sequenze di ogni ortogruppo, per poter osservare il quantitativo di variazioni a livello amminoacidico di ogni gene rispetto agli geni appartenenti al medesimo ortogruppo.
 ```bash
+#|sequence|
 for OG in $(cat species_tree_OG.txt); do mafft —auto —anysimbol "$OG" ../../../03_aligned/${OG/.fa/_aligned.faa}; done
 ```
 
 ### Trimming delle sequenze
 La fase di trimming può essere eseguita solamente dopo aver compiuto l'allineamento. Ha lo scopo di eliminare e pulire le sequenze che risultano sbaglliate dopo l'allineamento.
 ```bash
+#|sequence|
 for OG in *; do bmge -i "$OG" -t AA -m BLOSUM62 -e 0.5 -g 0.4 -of ../04_trimmed/${OG/_aligned.faa/_trimmed.faa}; done
 ```
 
@@ -114,6 +116,8 @@ A questo punto vengono unite tutte le sequenze (già allineate e trimmate), ritr
 ### Costruzione albero
 Ora si posseggono tutti gli input per poter avviare l'analisi filogenetica per la costruzione dell'albero delle specie. In questo caso è stato usato il programma iqtree, che andrà ad utilizzare come dati proprio le sequenze derivanti dal concatenamento.
 ```bash
+#|tree|
 iqtree -m TESTNEW -b 100 -s conc_species_tree —prefix species_tree -nt 9
 ```
+
 
