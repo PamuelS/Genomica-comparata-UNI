@@ -6,7 +6,7 @@ Le operazioni che verranno eseguite di seguito, per l'identificazione di geni or
 Sostanzialmente l'esecuzione di questo passaggio può essere riassunto in alcuni passaggi fondamentali:
 1) Gestione e pulizia delle sequenze
 2) Inferenza di ortologia
-3) Creazione dell'albero delle specie
+3) [Inferenza Albero delle Specie](./05_tree)
 
 -----
 
@@ -122,6 +122,7 @@ Ora si posseggono tutti gli input per poter avviare l'analisi filogenetica per l
 #|tree|
 iqtree -m TESTNEW -b 100 -s conc_species_tree —prefix species_tree -nt 9
 ```
+
 
 
 
