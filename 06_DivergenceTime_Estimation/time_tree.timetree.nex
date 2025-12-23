@@ -1,0 +1,4 @@
+#NEXUS
+Begin trees;
+tree 1 = ((((Aedalb[&date="0"]:64.0576,(Malgen[&date="0"]:61.1938,Toxrut[&date="0"]:61.1938)[&date="-61.1938"]:2.86387)[&date="-64.0576"]:3.46506,Culpip[&date="0"]:67.5227)[&date="-67.5227"]:8.27731,Uralow[&date="0"]:75.8)[&date="-75.8"]:59.4755,Anoste[&date="0"]:135.275)[&date="-135.275"];
+End;
