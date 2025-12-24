@@ -16,6 +16,7 @@ In modo sostanziale il compimento dell'inferenza di ortologia e della creazione 
 -----
 
 ## Gestione e pulizia delle sequenze
+Prima di procedere con le fasi succesive, è necessario compiere alcune modifiche ai file ottenuti. 
 Questo passaggio rappresenta un punto importante nel workflow perchè è utile per avere una rappresentazione delle sequenze relative ad ogni specie il più chiara possibile, consentendo di avere una informazione precisa da fornire ai successivi programmi (es. Orthofinder)
 
 ### Isoforma più lunga
@@ -49,4 +50,5 @@ A questo punto si procede con la modifica dell'header per facilitare le operazio
 ```bash
 for prot in *.faa; do ID=$(basename -s .faa "$prot"); sed -i.old -E "s/>(rna-XM_[0-9]+\.[0-9]) (gene=gene-.[^ ]+) name=(.[^ ]+) .+$/>${ID}\|\3/" "$prot"; done
 ```
+
 
