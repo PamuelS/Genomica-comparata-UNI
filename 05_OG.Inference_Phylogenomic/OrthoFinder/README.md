@@ -1,5 +1,8 @@
 # Inferenza di Ortologia
-A questo punto si può procedere con la creazione dei potenziali ortogruppi identificati dal programma Orthofinder. La ricerca e l'identificazione dei geni ortologhi parte proprio dall'imput dei proteomi "puliti".
+Una volta impostate tutte le sequenze secondo i parametri usati in precedenza, si può procedere con l'inferenza di ortologia, eseguita interamente dal programma [Orthofinder](./https://github.com/davidemms/OrthoFinder).
+La ricerca e l'identificazione dei geni ortologhi parte proprio dall'imput dei proteomi "puliti".
+
+-----
 
 ## Identificazione di ortogruppi
 Con questo comando si esegui il primo passaggio per la ricostruzione dei rapporti di ortologia tra i vari geni delle specie del dataset. Viene restituita una serie di informazioni riguardanti l'ortologia, l'albero dei geni e l'albero delle soecie.
