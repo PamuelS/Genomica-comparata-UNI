@@ -10,7 +10,7 @@ In modo sostanziale il compimento dell'inferenza di ortologia e della creazione 
 2) [Eliminazione paraloghi](./01_DISCO)
 3) [Identificazione delle sequenze](./02_disco_OG)
 4) [Allineamento delle sequenze](./03_aligned)
-5) [Pulizia/Trimming](./04_trimmed)
+5) [Trimming e Concatenazione](./04_trimmed)
 6) [Inferenza Albero delle Specie](./05_tree)
 
 -----
@@ -127,6 +127,7 @@ Ora si posseggono tutti gli input per poter avviare l'analisi filogenetica per l
 #|tree|
 iqtree -m TESTNEW -b 100 -s conc_species_tree —prefix species_tree -nt 9
 ```
+
 
 
 
