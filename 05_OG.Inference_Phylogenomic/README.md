@@ -4,9 +4,12 @@ Prima di procedere è bene ricordare che la ricostruzione degli eventi evolutivi
 Le operazioni che verranno eseguite di seguito, per l'identificazione di geni ortologhi, faranno riferimento alla creazione di Ortogruppi. Gli ortogruppi rappresentano raggruppamenti contenenti unicamente geni ortologhi tra di loro per le specie prese in considerazione, e che differiscono dal concetto di "gruppo di ortologhi" ovvero un raggruppamento di più ortogruppi che probabilmente racchiude geni paraloghi tra di loro. 
 
 Sostanzialmente l'esecuzione di questo passaggio può essere riassunto in alcuni passaggi fondamentali:
-1) Gestione e pulizia delle sequenze
-2) Inferenza di ortologia
-3) [Inferenza Albero delle Specie](./05_tree)
+1) [Inferenza di Ortologia](./OrthoFinder/Results_Dec01/Comparative_Genomics_Statistics)
+2) [Esecuzione di DISCO](./01_DISCO)
+3) [Eliminazione paraloghi](./02_disco_OG)
+4) [Allineamento delle sequenze](./03_aligned)
+5) [Pulizia/Trimming](./04_trimmed)
+6) [Inferenza Albero delle Specie](./05_tree)
 
 -----
 
@@ -122,6 +125,7 @@ Ora si posseggono tutti gli input per poter avviare l'analisi filogenetica per l
 #|tree|
 iqtree -m TESTNEW -b 100 -s conc_species_tree —prefix species_tree -nt 9
 ```
+
 
 
 
