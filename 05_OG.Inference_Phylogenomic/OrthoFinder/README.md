@@ -1,5 +1,5 @@
 # Inferenza di Ortologia
-Una volta impostate tutte le sequenze secondo i parametri usati in precedenza, si può procedere con l'inferenza di ortologia, eseguita interamente dal programma [Orthofinder](https://github.com/davidemms/OrthoFinder).
+Una volta impostate tutte le sequenze secondo i parametri usati in precedenza, si può procedere con l'inferenza di ortologia, eseguita interamente dal programma [Orthofinder](https://github.com/davidemms/OrthoFinder). Quello che Orthofinder compie, è la creazione di ortogruppi tra i geni delle specie fornitegli (con possibile inserimento di geni paraloghi dentro gli ortogruppi). 
 La ricerca e l'identificazione dei geni ortologhi parte proprio dall'imput dei proteomi "puliti".
 
 -----
