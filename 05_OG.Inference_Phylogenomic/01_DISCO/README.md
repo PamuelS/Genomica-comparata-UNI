@@ -1,4 +1,4 @@
-# Esecuzione di DISCO
+# Eliminazione dei Paraloghi
 
 ## Eliminazione di Geni Paraloghi
 Pulizia del file Resolved_Gene_Tree.txt (contiene il nome dell'ortogruppo e l'albero associato) dalla presenza di eventuali geni paraloghi oppure duplicazioni, mediante l'utilizzo di "disco.py". Inoltre grazie al comando "sed" vengono modificati glie header delle specie per poter renderli accessibili da disco.
@@ -16,3 +16,4 @@ Rimozione di possibili "alberi" vuoti creatisi in precedenza.
 find . -size 0 -print > empty_disco.txt
 find . -size 0 -delete
 ```
+
