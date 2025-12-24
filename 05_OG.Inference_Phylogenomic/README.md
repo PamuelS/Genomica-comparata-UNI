@@ -7,8 +7,8 @@ Le operazioni che verranno eseguite di seguito, per l'identificazione di geni or
 
 In modo sostanziale il compimento dell'inferenza di ortologia e della creazione dell'albero delle specie, può essere riassunto in alcuni passaggi fondamentali:
 1) [Inferenza di Ortologia](./OrthoFinder/Results_Dec01/Comparative_Genomics_Statistics)
-2) [Esecuzione di DISCO](./01_DISCO)
-3) [Eliminazione paraloghi](./02_disco_OG)
+2) [Eliminazione paraloghi](./01_DISCO)
+3) [Identificazione delle sequenze](./02_disco_OG)
 4) [Allineamento delle sequenze](./03_aligned)
 5) [Pulizia/Trimming](./04_trimmed)
 6) [Inferenza Albero delle Specie](./05_tree)
@@ -127,6 +127,7 @@ Ora si posseggono tutti gli input per poter avviare l'analisi filogenetica per l
 #|tree|
 iqtree -m TESTNEW -b 100 -s conc_species_tree —prefix species_tree -nt 9
 ```
+
 
 
 
