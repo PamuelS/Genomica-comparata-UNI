@@ -6,4 +6,5 @@
 2. [Genome Survey](02_KmerBased_GenomSurvey)
 3. [Assemblaggio del genoma](03_GenomeAssembly)
 4. [Annotazione del genoma](04_GenomeAnnotation)
-5. [Inferenza su ortologhi](./05_OG.Inference_Phylogenomic)
+5. [Inferenza su ortologhi e albero delle specie](./05_OG.Inference_Phylogenomic)
+6. [Albero ultrametrico](./06_DivergenceTime_Estimation)
