@@ -23,7 +23,7 @@ Il [Dataset](./dataset.tsv) è stato salvato in formato tsv in modo tale da poss
 -----
 
 ## Download 
-Ad ogni specie è stato associato un genoma e un file .gff, acquisiti direttamente dall'Accession number estratto in precedenza. Tutto il procedimento è stato eseguito grazie ad uno script specifico.
+Ad ogni specie è stato associato un genoma e un file .gff, acquisiti direttamente dall'Accession number estratto in precedenza. Tutto il procedimento è stato eseguito grazie allo script "download_dataset.sh dataset.tsv".
 
 ```bash
 bash ../99_scripts/download_dataset.sh dataset.tsv
