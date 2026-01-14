@@ -26,6 +26,11 @@ cafe5 -i GeneCount_CAFE.tsv -t timetree.nwk -o Error_model -e
 ## Analisi di CAFE5
 CAFE5 è il programma che è stato utilizzare per l'inferenza dell'espansione e copntrazione delle famiglie geniche nelle varie specie prese in considerazione.
 
+Questo programma utilizza alcuni parametri nello specifico per copiere l'analisi come ad esempio:
+- Lambda (λ) --> rappresenta il tasso evolutivo di Birth/Death nelle varie specie. Il valore di Lambda viene associato ad ogni specie e valori diversi di Lambda implicano tassi evolutivi differenziati tra le specie osservate.
+- Gamma (γ) --> descrive la variabilità del valore Lambda all'interno delle varie famiglie geniche. Molteplici valori di gamma implicano che non tutte le famiglie evolvono allo stesso ritmo.
+
+
 ### Utilizzo di una Lambda 
 ```bash
 for k in {1..5}; do for n in {1..10}; do mkdir -p 00_1L/${k}K/${n}N; cafe5 -i GeneCount_ -t timetree.nwk -o 00_1L/${k}K/${n}N -e./Error_model/Base_error_model.txt -k ${k}; done; done
