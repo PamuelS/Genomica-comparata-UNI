@@ -10,22 +10,28 @@ Lo studio delle modificazioni delle famigli geniche lungo la storia evolutiva de
 -----
 
 ## Preparazione all'analisi 
-Per poter utilizzare il programma CAFE5 è necessario predisporre alla lettura un file
+Per poter utilizzare il programma CAFE5 è necessario predisporre alla lettura un file nello specifico, che è stato denominato [Gene Count CAFE](./GeneCount_CAFE.tsv) ed è stato ottenuto direttamente dall'output di [Orthofinder](../05_OG.Inference_Phylogenomic/OrthoFinder). In questo file ritroviamo tutti gli ortogruppi e le divisioni dei geni (di quell'ortogruppo) per ogni specie.
+
 ```bash
 sed $'s/^/NONE\t/g' Orthogroups.GeneCount.tsv | rev Orthogroups.GeneCount.tsv  | cut -f 2- | rev > GeneCount_CAFE.tsv 
 ```
 
 ## Creazione dell'Error model
+A questo punto per rendere l'analisi di CAFE5 il più veritiero possibile, si calcola un Error Model. Questo Error Model rappresenta un modello stratistico che descrive la probabilità che il nuemro di geni osservati in una famiglia genica sia diverso dal numero reale a causa di errori tecnici. La statistica restituita dal modello verrà poi implementata nei passaggi successivi.
+
 ```bash
 cafe5 -i GeneCount_CAFE.tsv -t timetree.nwk -o Error_model -e
 ```
 
-## Analisi di CAFE5 a una 1 lambda
+## Analisi di CAFE5
+CAFE5 è il programma che è stato utilizzare per l'inferenza dell'espansione e copntrazione delle famiglie geniche nelle varie specie prese in considerazione.
+
+### Utilizzo di una Lambda 
 ```bash
 for k in {1..5}; do for n in {1..10}; do mkdir -p 00_1L/${k}K/${n}N; cafe5 -i GeneCount_ -t timetree.nwk -o 00_1L/${k}K/${n}N -e./Error_model/Base_error_model.txt -k ${k}; done; done
 ```
 
-## Analisi di CAFE5 a 2 lambda
+### Utilizzo di due Lambda
 
 ```bash
 for k in {1..5}; do for n in {1..10}; do mkdir -p 00_2L/${k}K/${n}N; cafe5 -i GeneCount_ -t timetree.nwk -o 00_2L/${k}K/${n}N -y timetree_2Lambda.nwk -e./Error_model/Base_error_model.txt -k ${k}; done; done
