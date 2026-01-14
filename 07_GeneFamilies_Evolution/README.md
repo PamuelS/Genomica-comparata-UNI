@@ -24,7 +24,7 @@ cafe5 -i GeneCount_CAFE.tsv -t timetree.nwk -o Error_model -e
 ```
 
 ## Analisi di CAFE5
-CAFE5 è il programma che è stato utilizzare per l'inferenza dell'espansione e copntrazione delle famiglie geniche nelle varie specie prese in considerazione.
+[CAFE5](https://github.com/hahnlab/CAFE5) è il programma che è stato utilizzare per l'inferenza dell'espansione e copntrazione delle famiglie geniche nelle varie specie prese in considerazione.
 
 Questo programma utilizza alcuni parametri nello specifico per copiere l'analisi come ad esempio:
 - Lambda (λ) --> rappresenta il tasso evolutivo di Birth/Death nelle varie specie. Il valore di Lambda viene associato ad ogni specie e valori diversi di Lambda implicano tassi evolutivi differenziati tra le specie osservate.
@@ -32,12 +32,15 @@ Questo programma utilizza alcuni parametri nello specifico per copiere l'analisi
 
 Per compiere l'analisi, CAFE5 necessita anche dell'[albero ultrametrico in formato .nkw](./timetree.nkw) ottenuto tramite l'esportazione del file [time_tree.timetree.nex](../06_DivergenceTime_Estimation/time_tree.timetree.nex) in formato .nkw mediante il sito [iTol](https://itol.embl.de).
 
-### Utilizzo di una Lambda 
+### Utilizzo di una Lambda
+È stata eseguita prima una analisi CAFE5 impostando un singolo valore di Lambda per ogni singola specie, presupponendo che il Turnover (tendenza di una famiglia genica di espandersi o contrarsi) rimanga invariato per tutte le specie.
+
 ```bash
 for k in {1..5}; do for n in {1..10}; do mkdir -p 00_1L/${k}K/${n}N; cafe5 -i GeneCount_ -t timetree.nwk -o 00_1L/${k}K/${n}N -e./Error_model/Base_error_model.txt -k ${k}; done; done
 ```
 
 ### Utilizzo di due Lambda
+Successivamente è stata compiuta una seconda analisi di CAFE5 dove sono stati selezionati due valori di Lambda. Come è possibile osservare dal file [timetree_2Lambda.nkw](./timetree_2Lambda.nkw]) il valore 2 è stato associato alle due specie di Culicidi che presentano una alimentazione eterogenea rispetto alle altre specie, presupponendo uno tasso evolutivo contraddistinto (vedi [tabella specie](../00_data)). 
 
 ```bash
 for k in {1..5}; do for n in {1..10}; do mkdir -p 00_2L/${k}K/${n}N; cafe5 -i GeneCount_ -t timetree.nwk -o 00_2L/${k}K/${n}N -y timetree_2Lambda.nwk -e./Error_model/Base_error_model.txt -k ${k}; done; done
