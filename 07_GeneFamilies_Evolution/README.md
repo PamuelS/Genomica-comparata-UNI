@@ -30,6 +30,7 @@ Questo programma utilizza alcuni parametri nello specifico per copiere l'analisi
 - Lambda (λ) --> rappresenta il tasso evolutivo di Birth/Death nelle varie specie. Il valore di Lambda viene associato ad ogni specie e valori diversi di Lambda implicano tassi evolutivi differenziati tra le specie osservate.
 - Gamma (γ) --> descrive la variabilità del valore Lambda all'interno delle varie famiglie geniche. Molteplici valori di gamma implicano che non tutte le famiglie evolvono allo stesso ritmo.
 
+Per compiere l'analisi, CAFE5 necessita anche dell'[albero ultrametrico in formato .nkw](./timetree.nkw) ottenuto tramite l'esportazione del file [time_tree.timetree.nex](../06_DivergenceTime_Estimation/time_tree.timetree.nex) in formato .nkw mediante il sito [iTol](https://itol.embl.de).
 
 ### Utilizzo di una Lambda 
 ```bash
