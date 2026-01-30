@@ -1,5 +1,6 @@
 # Gene Annotation and Functional Enrichment
 Una volta eseguita l'analisi di CAFE5, si può proseguire con: annotazione delle sequenze e arricchimento funzionale.
+
 Per annotazione si intende l'associazione di una determinata funzione ad una sequenza oppure, come in questo specifico caso, ad un intero ortogruppo. Questo procedimento utilizza delle targhette standardizzate che vengono definite GO (Gene Onthology) che descrivono ruoli biologici ben specifici. 
 
 I ruoli biologici vengono suddivisi in tre categorie diverse:
@@ -7,5 +8,8 @@ I ruoli biologici vengono suddivisi in tre categorie diverse:
 - Biological Process (BP) in quale processo biologico la proteina è coinvolta
 - Cellular Components (CC) dove è situata la proteina nella cellula
 
+Durante l'annotazione si fa sempre riferimento ad una banca dati dalla quale estrarre le informazioni relative alla sequenza che si sta osservando, perciò il ruolo della proteina viene dedotto per confronto con sequenze già caratterizzate.
+
+In seguito alla annotazione, si esegue l'arricchimento funzionale che consente di convertire l'informazione associata ai Go terms in una interpretazione biologica. 
 
 
