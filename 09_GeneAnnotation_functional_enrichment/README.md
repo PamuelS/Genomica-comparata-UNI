@@ -46,7 +46,11 @@ Sempre utilizzando il programma Diamond si esegue un blast, per associare le seq
 
 
 > **diamond_samuel.tsv** è il risultato del blast di Diamond
+
 > **longest_samuel.faa** è il mio file di input (ovvero quello della proteina più lunga)
+
 > **longest_samuel.tsv** è il file dell'annotazione funzionale eseguito da Panther
+
 > **diamond_samuel_names.tsv** è il file di mapping/rifinituare che contiene i nomi delle proteine associate agli ortogruppi
+
 
