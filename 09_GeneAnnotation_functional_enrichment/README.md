@@ -15,9 +15,17 @@ In seguito alla annotazione, si esegue l'arricchimento funzionale che consente d
 -----
 
 ## Creazione del file di annotazione
-Per eseguire l'annotazione viene utilizzato come file di partenza il file che è stato ottenuto mediante l'allineamento e il trimming di tutti gli ortogruppi (longest_proteine_OGs.txt) ottenuti dopo l'esecuzione del comando di disco.
+Per eseguire l'annotazione viene utilizzato come file di partenza il file che è stato ottenuto mediante l'allineamento e il trimming di tutti gli ortogruppi (longest_proteine_OGs.txt) ottenuti dopo l'esecuzione del comando di disco, al quali si associa lo script longest_protein_OGs.txt. 
+Questo script consente di estrarre la proteina più lunga associata a ciascun ortogruppo, per limitare il ritrovamento di gaps all'interno della sequenza.
 
 ```bash
 bash ../99_scripts/longest_protein_OG.sh /home/STUDENTI/samuel.pederzini/Genomica-comparata-UNI/05_OG.Inference_Phylogenomic/04_trimmed/tutti_ortogruppi_trimmed/longest_protein_OGs.txt
 
+```
+
+## Confronto delle sequenze con un Database
+Per riuscire ad associare i GO terms alle sequenze del mio studio, è prima necessario fare un confronto diretto con tutte le sequenze già preesistenti all'interno di una banca dati. Per eseguire questa operazione è stato utilizzato il programma Diamond.
+
+```bash
+diamond makedb --in /home/STUDENTI/samuel.pederzini/Genomica-comparata-UNI/09_GeneAnnotation_functional_enrichment/longest_protein_OGs.txt --db ./nr_diamond
 ```
