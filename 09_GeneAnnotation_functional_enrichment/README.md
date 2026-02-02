@@ -23,9 +23,29 @@ bash ../99_scripts/longest_protein_OG.sh /home/STUDENTI/samuel.pederzini/Genomic
 
 ```
 
-## Confronto delle sequenze con un Database
-Per riuscire ad associare i GO terms alle sequenze del mio studio, è prima necessario fare un confronto diretto con tutte le sequenze già preesistenti all'interno di una banca dati. Per eseguire questa operazione è stato utilizzato il programma Diamond.
+## Annotazione funzionale degli ortogruppi
+La fase di annotazione non è caratterizzata da un singolo passaggio, ma dall'unione di molteplici passaggi caratterizzati dall'utilizzo di diversi programmi e applicazioni.
+
+### Confronto delle sequenze con un Database
+Per riuscire ad associare i GO terms alle sequenze del mio studio, è prima necessario convertire il file di input in un file specifico leggibile dal programma che utilizzeremo, ovvero Diamond. Questa operazione viene svolta per rendere più veloce e performante la lettura del file al programma.
 
 ```bash
 diamond makedb --in /home/STUDENTI/samuel.pederzini/Genomica-comparata-UNI/09_GeneAnnotation_functional_enrichment/longest_protein_OGs.txt --db ./nr_diamond
 ```
+
+### Blast delle sequenze
+Sempre utilizzando il programma Diamond si esegue un blast, per associare le sequenze proteiche relative ai miei ortogruppi, alle sequenze presenti nella banca dati. 
+
+```bash
+
+```
+
+
+
+
+
+
+> diamond_samuel.tsv è il risultato del blast di Diamond
+> longest_samuel.faa è il mio file di input (ovvero quello della proteina più lunga)
+> longest_samuel.tsv è il file dell'annotazione funzionale eseguito da Panther
+> diamond_samuel_names.tsv è il file di mapping/rifinituare che contiene i nomi delle proteine associate agli ortogruppi
