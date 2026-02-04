@@ -40,10 +40,13 @@ Sempre utilizzando il programma Diamond si esegue un blast, per associare le seq
 
 ```
 
+## Creazione del Background
+Per proseguire con la fase di arricchimento funzionale, è necessario creare il file di [Background](./go_back.tsv). Questo file contiene la lista di tutti i GO terms che sono stati associati alle sequenze proteiche relative ad ogni ortogruppo.
 
+```bash
+awk -F'\t' '{ gsub(/@.*/,"",$1); gsub(/\([^)]*\)/,"",$2); gsub(/\|/,",",$2); split($2,a,","); for(i in a) if(a[i]!="") seen[$1,a[i]]=1 } END { for(k in seen){ split(k,b,SUBSEP); groups[b[1]]=(groups[b[1]] ? groups[b[1]] "," b[2] : b[2]) } for(g in groups) print g "\t" groups[g] }' <(cut -f1,14 panther.tsv) > go_back.ts
 
-
-
+```
 
 > **diamond_samuel.tsv** è il risultato del blast di Diamond
 
@@ -52,5 +55,6 @@ Sempre utilizzando il programma Diamond si esegue un blast, per associare le seq
 > **longest_samuel.tsv** è il file dell'annotazione funzionale eseguito da Panther
 
 > **diamond_samuel_names.tsv** è il file di mapping/rifinituare che contiene i nomi delle proteine associate agli ortogruppi
+
 
 
