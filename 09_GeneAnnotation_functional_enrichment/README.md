@@ -24,7 +24,7 @@ bash ../99_scripts/longest_protein_OG.sh /home/STUDENTI/samuel.pederzini/Genomic
 ```
 
 ## Annotazione funzionale degli ortogruppi
-La fase di annotazione rappresenta un punto estremamente importante per la corretta riuscita di un arricchimento funzionale. Le tecniche utilizzate per svolgere l'annotazione possono essere molteplici, tuttavia per lo svolgimento di questo lavoro, sono stati utilizzati i programmi di: [InterProScan](https://github.com/ebi-pf-team/interproscan) e [Diamond](https://github.com/bbuchfink/diamond).
+La fase di annotazione rappresenta un punto estremamente importante per la corretta riuscita di un arricchimento funzionale. Le tecniche utilizzate per svolgere l'annotazione possono essere molteplici, tuttavia per lo svolgimento di questo lavoro, sono stati utilizzati i programmi di: [InterProScan](https://github.com/ebi-pf-team/interproscan) e [Diamond](https://github.com/bbuchfink/diamond). Lo scopo ultimo di questo processo, è quello di riuscire ad associare una determinata funzione alle sequenze proteiche.
 
 >è importante ricordare che **Diamond** serve per identificare la proteina associata ad una sequenza, mentre **Panther** consente di capire il ruolo della proteina (quindi ci associa un GO)
 
@@ -45,14 +45,23 @@ diamond makedb --in /home/STUDENTI/samuel.pederzini/Genomica-comparata-UNI/09_Ge
 Sempre utilizzando il programma Diamond si esegue un blast, per associare le sequenze proteiche relative ai miei ortogruppi, alle sequenze presenti nella banca dati. 
 In questo modo Diamond riesce ad associare la sequenza di riferimento, con tutte le sequenze (presenti in questo caso nel databse NCBI) e restituisce 25 possibili risultati per una proteina.
 
-## Creazione del Background
-Per proseguire con la fase di arricchimento funzionale, è necessario creare il file di [Background](./go_back.tsv). Questo file contiene la lista di tutti i GO terms che sono stati associati alle sequenze proteiche relative ad ogni ortogruppo.
+## Arricchimento funzionale
+L'arricchimento funzionale corrisponde ad una analisi statistica, che mi consente di verificare se determinate funzioni biologiche sono particolarmente rappresentate all'interno dei geni presi in considerazione, rispetto alla totalità delle sequenze ottenute (background).
+
+### Creazione del Background
+Per proseguire con la fase di arricchimento funzionale, è necessario creare il file di [Background](./go_back.tsv).
+
+Il background rappresenta l'elenco completo di tutti gli Orthogroups identificati da OrthoFinder che hanno ricevuto almeno un'annotazione funzionale (un GO term).
 
 ```bash
 awk -F'\t' '{ gsub(/@.*/,"",$1); gsub(/\([^)]*\)/,"",$2); gsub(/\|/,",",$2); split($2,a,","); for(i in a) if(a[i]!="") seen[$1,a[i]]=1 } END { for(k in seen){ split(k,b,SUBSEP); groups[b[1]]=(groups[b[1]] ? groups[b[1]] "," b[2] : b[2]) } for(g in groups) print g "\t" groups[g] }' <(cut -f1,14 panther.tsv) > go_back.ts
 
 ```
 
+### Scelta dei geni significativi
+Dall'analisi di [CAFE5](../07_GeneFamilies_Evolution), dal file Base_asr.tre sono stati selezioni fli alberi che presentavano una significatività. I criteri di significatività utilizzati sono stati due:
+- significatività solamente nelle specie che si [nutrono di nettare](./ortogruppi_nettare_importante.txt)
+- significatività in tutte le specie che si [nutrono di sangue](./ortogruppi_sangue_importante.txt)
 
 -----
 
@@ -63,5 +72,6 @@ awk -F'\t' '{ gsub(/@.*/,"",$1); gsub(/\([^)]*\)/,"",$2); gsub(/\|/,",",$2); spl
 > **longest_samuel.tsv** è il file dell'annotazione funzionale eseguito da Panther
 
 > **diamond_samuel_names.tsv** è il file di mapping/rifinituare che contiene i nomi delle proteine associate agli ortogruppi
+
 
 
