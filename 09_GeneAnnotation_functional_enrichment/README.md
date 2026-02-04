@@ -62,6 +62,10 @@ awk -F'\t' '{ gsub(/@.*/,"",$1); gsub(/\([^)]*\)/,"",$2); gsub(/\|/,",",$2); spl
 Dall'analisi di [CAFE5](../07_GeneFamilies_Evolution), dal file Base_asr.tre sono stati selezioni fli alberi che presentavano una significatività. I criteri di significatività utilizzati sono stati due:
 - significatività solamente nelle specie che si [nutrono di nettare](./ortogruppi_nettare_importante.txt)
 - significatività in tutte le specie che si [nutrono di sangue](./ortogruppi_sangue_importante.txt)
+- significatività nel [nodo tra le due specie nettarivore](./oerofruppi_nodo_nettare_importante.txt)
+
+### Analisi di arricchimento 
+L'arricchimento vero e proprio viene eseguito tramite il programma R-studio, dove vengono inseriti i file di background, degli ortogruppi significativamente espansi/contratti e del codice da utilizzare per l'analisi.
 
 -----
 
@@ -72,6 +76,7 @@ Dall'analisi di [CAFE5](../07_GeneFamilies_Evolution), dal file Base_asr.tre son
 > **longest_samuel.tsv** è il file dell'annotazione funzionale eseguito da Panther
 
 > **diamond_samuel_names.tsv** è il file di mapping/rifinituare che contiene i nomi delle proteine associate agli ortogruppi
+
 
 
 
