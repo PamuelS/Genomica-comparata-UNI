@@ -24,30 +24,26 @@ bash ../99_scripts/longest_protein_OG.sh /home/STUDENTI/samuel.pederzini/Genomic
 ```
 
 ## Annotazione funzionale degli ortogruppi
-La fase di annotazione non è caratterizzata da un singolo passaggio, ma dall'unione di molteplici passaggi caratterizzati dall'utilizzo di diversi programmi e applicazioni.
+La fase di annotazione rappresenta un punto estremamente importante per la corretta riuscita di un arricchimento funzionale. Le tecniche utilizzate per svolgere l'annotazione possono essere molteplici, tuttavia per lo svolgimento di questo lavoro, sono stati utilizzati i programmi di: [InterProScan](https://github.com/ebi-pf-team/interproscan) e [Diamond](https://github.com/bbuchfink/diamond).
 
-### Confronto delle sequenze con un Database
-Per riuscire ad associare i GO terms alle sequenze del mio studio, è prima necessario convertire il file di input in un file specifico leggibile dal programma che utilizzeremo, ovvero Diamond. Questa operazione viene svolta per rendere più veloce e performante la lettura del file al programma.
-
-```bash
-diamond makedb --in /home/STUDENTI/samuel.pederzini/Genomica-comparata-UNI/09_GeneAnnotation_functional_enrichment/longest_protein_OGs.txt --db ./nr_diamond
-```
 >è importante ricordare che **Diamond** serve per identificare la proteina associata ad una sequenza, mentre **Panther** consente di capire il ruolo della proteina (quindi ci associa un GO)
 
-
-### Blast delle sequenze
-Sempre utilizzando il programma Diamond si esegue un blast, per associare le sequenze proteiche relative ai miei ortogruppi, alle sequenze presenti nella banca dati. 
-
-```bash
-
-```
-
-### Associazione dei Go terms
-
+### Associazione dei Go terms mediante InterProScan
+L'annotazione eseguita da InterProScan non si basa su una banale associazione di sequenza per similarità, ma consente di analizzare porzioni specifiche (ad esempio i domini proteici) contenute all'interno della sequenza per tentare l'associazione ad una famiglia proteica già nota, e (tramite la flag -goterms) li tramuta in GO
 
 ```bash
 /home/PERSONALE/dbs/interproscan-5.65-97.0/interproscan.sh -i longest_protein_OGs.txt -goterms -pa -b longest_samuel.tsv -cpu <N_CPUS>
 ```
+
+### Associazione dei GO terms mediante Diamond
+L'altro metodo prevede l'utilizzo di Diamond. Per riuscire ad associare i GO terms alle sequenze del mio studio, è prima necessario convertire il file di input in un file specifico leggibile dal programma che utilizzeremo, ovvero Diamond. Questa operazione viene svolta per rendere più veloce e performante la lettura del file al programma.
+
+```bash
+diamond makedb --in /home/STUDENTI/samuel.pederzini/Genomica-comparata-UNI/09_GeneAnnotation_functional_enrichment/longest_protein_OGs.txt --db ./nr_diamond
+```
+
+Sempre utilizzando il programma Diamond si esegue un blast, per associare le sequenze proteiche relative ai miei ortogruppi, alle sequenze presenti nella banca dati. 
+In questo modo Diamond riesce ad associare la sequenza di riferimento, con tutte le sequenze (presenti in questo caso nel databse NCBI) e restituisce 25 possibili risultati per una proteina.
 
 ## Creazione del Background
 Per proseguire con la fase di arricchimento funzionale, è necessario creare il file di [Background](./go_back.tsv). Questo file contiene la lista di tutti i GO terms che sono stati associati alle sequenze proteiche relative ad ogni ortogruppo.
@@ -58,7 +54,7 @@ awk -F'\t' '{ gsub(/@.*/,"",$1); gsub(/\([^)]*\)/,"",$2); gsub(/\|/,",",$2); spl
 ```
 
 
-
+-----
 
 > **diamond_samuel.tsv** è il risultato del blast di Diamond (eseguito sul database di NCBI) dove sono state scelti 25 risultati per ogni proteina
 
@@ -67,4 +63,5 @@ awk -F'\t' '{ gsub(/@.*/,"",$1); gsub(/\([^)]*\)/,"",$2); gsub(/\|/,",",$2); spl
 > **longest_samuel.tsv** è il file dell'annotazione funzionale eseguito da Panther
 
 > **diamond_samuel_names.tsv** è il file di mapping/rifinituare che contiene i nomi delle proteine associate agli ortogruppi
+
 
