@@ -49,8 +49,12 @@ for k in {1..5}; do for n in {1..10}; do mkdir -p 00_2L/${k}K/${n}N; cafe5 -i Ge
 ## AIC / BIC
 AIC e BIC sono due indici statistici che vengono fondamentalmente utilizzati per capire quale, tra i vari modelli statistici utilizzati, rappresenta il più adatto. Viene assegnato un valore ad ogni modello utilizzato, con l'obiettivo di raggiungere un modello preciso ma allo stesso tempo il più semplice possibile, andando a penalizzare molto spesso la complessità di un modello.
 Ciascuno dei due indici statistici presenta formule distinte:
-- AIC (Akaike Information Criterion) ---> AIC=2k−2ln(L^)
-- BIC (Bayesian Information Criterion) ---> BIC=kln(n)−2ln(L^)
+- AIC (Akaike Information Criterion)     ---> AIC=2k−2ln(L^)
+- BIC (Bayesian Information Criterion)   ---> BIC=kln(n)−2ln(L^)
 
-
-
+### Valore migliore nei replicati tecnici
+Inizialmente si è cercato quale fosse il valore migliore di likelihood all'interno dei dieci replicati tecnici, ripetendo questo procedimento per ogni valore di Gamma presente nelle analisi ad una e a due Lambda.
+```bash
+for folder in */; do lnL=$(grep "lnL" ${folder}/Base_results.txt | grep -oE "[0-9]*([\.,][0-9]*)?"); L=$(grep "Lambda" ${folder}/Base_results.txt | grep -oE "[0-9]*\.[0-9]*"); E=$(grep "Epsilon" ${folder}/Base_results.txt | grep -oE "[0-9]*\.[0-9]*"); echo -e "$lnL\t$L\t$E" >> sum_results.tsv; done
+```
+>Quando il valore di Gamma è superiore ad uno, si deve sostituire **Base_** con **Gamma_**
