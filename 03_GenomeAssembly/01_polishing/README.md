@@ -30,6 +30,14 @@ rm Anoste_raw_lr.bam
 
 -----
 
+### Requisiti per Hypo
+Prima di poter lanciare il programma hypo, è necessario prima ottenere il coverage delle short reads. Questo viene eseguito mediante il lancio di mosdepth
+
+```bash
+#|assembly|
+mosdepth -n --fast-mode --by 500 Anoste_raw_sr Anoste_raw_sr_sorted.bam 
+```
+
 ### Pulizia dell'assemblaggio
 Miglioramento della sequenza del genoma frazie al confronto con le reads mappate precedentemente
 
