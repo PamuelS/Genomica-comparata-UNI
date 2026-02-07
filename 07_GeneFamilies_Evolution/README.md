@@ -45,3 +45,11 @@ Successivamente è stata compiuta una seconda analisi di CAFE5 dove sono stati s
 ```bash
 for k in {1..5}; do for n in {1..10}; do mkdir -p 00_2L/${k}K/${n}N; cafe5 -i GeneCount_ -t timetree.nwk -o 00_2L/${k}K/${n}N -y timetree_2Lambda.nwk -e./Error_model/Base_error_model.txt -k ${k}; done; done
 ```
+
+## AIC / BIC
+AIC e BIC sono due indici statistici che vengono fondamentalmente utilizzati per capire quale, tra i vari modelli statistici utilizzati, rappresenta il più adatto. Viene assegnato un valore ad ogni modello utilizzato, con l'obiettivo di raggiungere un modello preciso ma allo stesso tempo il più semplice possibile, andando a penalizzare molto spesso la complessità di un modello.
+Ciascuno dei due indici statistici presenta formule distinte:
+AIC (Akaike Information Criterion) ---> AIC=2k−2ln(L^)
+BIC (Bayesian Information Criterion) ---> BIC=kln(n)−2ln(L^)
+
+
