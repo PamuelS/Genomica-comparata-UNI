@@ -54,7 +54,26 @@ Ciascuno dei due indici statistici presenta formule distinte:
 
 ### Valore migliore nei replicati tecnici
 Inizialmente si è cercato quale fosse il valore migliore di likelihood all'interno dei dieci replicati tecnici, ripetendo questo procedimento per ogni valore di Gamma presente nelle analisi ad una e a due Lambda.
+
 ```bash
 for folder in */; do lnL=$(grep "lnL" ${folder}/Base_results.txt | grep -oE "[0-9]*([\.,][0-9]*)?"); L=$(grep "Lambda" ${folder}/Base_results.txt | grep -oE "[0-9]*\.[0-9]*"); E=$(grep "Epsilon" ${folder}/Base_results.txt | grep -oE "[0-9]*\.[0-9]*"); echo -e "$lnL\t$L\t$E" >> sum_results.tsv; done
 ```
->Quando il valore di Gamma è superiore ad uno, si deve sostituire **Base_** con **Gamma_**
+>Quando il valore di Gamma è superiore ad uno, si deve sostituire **Base_** con **Gamma_** all'interno del codice riportato qui sopra.
+
+### Valore migliore tra le Gamma
+Una volta eseguito questo procedimento per tutte le cartelle con dentro i replicati tecnici associati a ciascuna 
+Gamma, si puù procedere con la scelta del miglior valore di likelihood associato ad ogni Gamma.
+
+```bash
+for f in */; do cut -f1 "$f"/sum_results.tsv | sort -n | head -n1; done > all_L.txt
+```
+Il procedimento deve essere eseguito per ciascuna delle due cartelle di Lambda usate nello studio
+>Ricordarsi che per ogni valore di Gamma bisogna selezionare soltanto il replicato tecnico che presenta il valore di likelihood più basso, dal quale poi si prosegue con il codice soprastante
+
+### Calcolo degli indici AIC e BIC
+A questo punto si procede con il calcolo degli indici statistici, per decretare quale tra i due modelli (una singola lambda oppure due) sia il miglior modello da applicare ai nostri dati.
+
+```bash
+paste --delimiters=$"\t" all_L.txt <(while IFS=$'\t' read -r L k; do echo "2*$k + 2*$L" | bc; done < all_L.txt) <(while IFS=$'\t' read -r L k; do echo "$k*9.23 + 2*$L" | bc; done < all_L.txt) | sort -k4,4n > AIC_BIC.tsv
+```
+>N.B. che il valore di 9.23 corrisponde al logaritmo naturale del totale degli alberi ritrovarti all'interno delle analisi di CAFE5
