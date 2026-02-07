@@ -15,6 +15,8 @@ Riordinamento dei contig ottenuti con il passaggio precedente, per creare la seq
 
 ```bash
 wtpoa-cns -t 7 -i Anoste_raw.ctg.lay.gz -fo Anoste_raw
+```
+
 -----
 
 ### Controllo qualitativo
