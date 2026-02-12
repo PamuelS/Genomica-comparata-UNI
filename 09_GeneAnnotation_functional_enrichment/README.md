@@ -67,7 +67,7 @@ Dall'analisi di [CAFE5](../07_GeneFamilies_Evolution), dal file Base_asr.tre son
 ### Analisi di arricchimento 
 L'arricchimento vero e proprio viene eseguito tramite il programma R-studio, dove vengono inseriti i file di background, degli ortogruppi significativamente espansi/contratti e del codice da utilizzare per l'analisi.
 
-```
+```R
 library(tidyverse)
 library(topGO)
 
@@ -219,6 +219,7 @@ print(intersect(genesInTerm(topGO, "GO:0051289")$'GO:0051289', notext_biggest$V1
 > **longest_samuel.tsv** è il file dell'annotazione funzionale eseguito da Panther
 
 > **diamond_samuel_names.tsv** è il file di mapping/rifinituare che contiene i nomi delle proteine associate agli ortogruppi
+
 
 
 
