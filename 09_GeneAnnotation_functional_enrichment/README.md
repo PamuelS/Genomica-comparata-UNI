@@ -67,6 +67,149 @@ Dall'analisi di [CAFE5](../07_GeneFamilies_Evolution), dal file Base_asr.tre son
 ### Analisi di arricchimento 
 L'arricchimento vero e proprio viene eseguito tramite il programma R-studio, dove vengono inseriti i file di background, degli ortogruppi significativamente espansi/contratti e del codice da utilizzare per l'analisi.
 
+```
+library(tidyverse)
+library(topGO)
+
+gene_universe <- readMappings(file =
+                                "go_back_collapsed.tsv)
+geneUniverse <- names(gene_universe)
+
+genesOfInterest <- read.table("interesting.txt",header=FALSE)
+list_interest1 <- list( "name_interest" = genesOfInterest)
+
+#upload of gene of interest
+GOenrichment <- function(trait, trait_name) {
+  if (!dir.exists("01_enrichment")) {
+    dir.create("01_enrichment")
+  }
+  
+  genesOfInterest <- as.character(trait[[1]]) #as vector not character 
+  geneList <- factor(as.integer(geneUniverse %in% genesOfInterest))
+  names(geneList) <- geneUniverse
+  
+  print(trait_name)
+  
+  ontology_values = c("BP", "MF", "CC")
+  
+  GOdata_list <- lapply(ontology_values, function(ontology_value) {
+    GOdata_name <- paste("GOdata_", ontology_value, sep = "")
+    # annot = annFUN.gene2GO this imparts the program which annotation it should use. In this case, it is specified that it will be in gene2GO format and provided by the user.
+    # gene2GO = gene_universe is the argument used to tell where is the annotation
+    assign(GOdata_name, new("topGOdata", ontology=ontology_value, allGenes=geneList, annot = annFUN.gene2GO, gene2GO = gene_universe))
+  })
+  
+  elim_list <- lapply(seq_along(ontology_values), function(i) {
+    elim_name <- paste("elim_", ontology_values[i], sep="")
+    assign(elim_name, runTest(GOdata_list[[i]], algorithm="elim", statistic="fisher"))
+  })
+  
+  results_elim <- function(GO_data, elim_data) {
+    num_nodes <- min(1000, length(elim_data@score))
+    resulte <- GenTable(GO_data, Classic_Fisher = elim_data,
+                        orderBy = "Classic_Fisher", topNodes=num_nodes, numChar=1000)
+    resulte$Classic_Fisher <- as.numeric(resulte$Classic_Fisher)
+    resulte <- subset(resulte, Classic_Fisher < 0.05)
+    return(resulte)
+  }
+  
+  results_elim_list <- lapply(seq_along(ontology_values), function(i) {
+    resulte_name <- paste("resulte_", ontology_values[i], sep="")
+    assign(resulte_name, envir = .GlobalEnv, results_elim(GOdata_list[[i]], elim_list[[i]]))
+  })
+  
+  write_elim_results <- function(result, ontology_value, trait_name) {
+    table_name <- paste("01_enrichment/topGOe_", trait_name, "_", ontology_value, ".txt", sep="")
+    write.table(result, file=table_name, quote=F, sep = "\t", row.names = F)
+  }
+  
+  lapply(seq_along(ontology_values), function(i) {
+    write_elim_results(results_elim_list[[i]], ontology_values[i], trait_name)
+  })
+}
+
+GMT <- function(trait, trait_name) {
+  genesOfInterest <- as.character(trait$V1) #as vector not character 
+  geneList <- factor(as.integer(geneUniverse %in% genesOfInterest))
+  names(geneList) <- geneUniverse
+  
+  print(paste("Working on", trait_name, sep = " "))
+  
+  ontology_values = c("BP", "MF", "CC")
+  
+  GOdata_list <- lapply(ontology_values, function(ontology_value) {
+    GOdata_name <- paste("GOdata_", ontology_value, sep = "")
+    # annot = annFUN.gene2GO this imparts the program which annotation it should use. In this case, it is specified that it will be in gene2GO format and provided by the user.
+    # gene2GO = gene_universe is the argument used to tell where is the annotation
+    assign(GOdata_name, new("topGOdata", ontology=ontology_value, allGenes=geneList, annot = annFUN.gene2GO, gene2GO = gene_universe))
+  })
+  
+  elim_list <- lapply(seq_along(ontology_values), function(i) {
+    elim_name <- paste("elim_", ontology_values[i], sep="")
+    assign(elim_name, runTest(GOdata_list[[i]], algorithm="elim", statistic="fisher"))
+  })
+  
+  results_elim <- function(GO_data, elim_data) {
+    resulte <- GenTable(GO_data, Classic_Fisher = elim_data, orderBy = "Classic_Fisher", topNodes=1000, numChar=1000)
+    resulte$Classic_Fisher <- as.numeric(resulte$Classic_Fisher)
+    resulte <- subset(resulte, Classic_Fisher < 0.05)
+    return(resulte)
+  }
+  
+  results_elim_list <- lapply(seq_along(ontology_values), function(i) {
+    resulte_name <- paste("resulte_", ontology_values[i], sep="")
+    assign(resulte_name, envir = .GlobalEnv, results_elim(GOdata_list[[i]], elim_list[[i]]))
+  })
+  
+  #transform in GMT format
+  list_OG_GO <- function(GO_term, GOdata, gene_of_interest){
+    genes <- intersect(genesInTerm(GOdata, GO_term)[[1]], gene_of_interest)
+    return(paste(genes, collapse = ","))
+  }
+  
+  result_GTM_list <- lapply(seq_along(ontology_values), function(i) {
+    results_elim_list[[i]]$Genes <- unlist(sapply(results_elim_list[[i]]$GO.ID, function(GO_term){list_OG_GO(GO_term, GOdata_list[[i]], genesOfInterest)}))
+    return(results_elim_list[[i]])
+  })
+  
+  print("Done! writing results.")
+  
+  write_gtm_results <- function(result, ontology_value, trait_name) {
+    table_name <- paste("02_enrichment/GTM_", trait_name, "_", ontology_value, ".gtm", sep="")
+    write.table(result, file=table_name, quote=F, sep = "\t", row.names = F)
+  }
+  
+  lapply(seq_along(ontology_values), function(i) {
+    write_gtm_results(result_GTM_list[[i]], ontology_values[i], trait_name)
+  })
+}
+
+#Complete function to perform enrichment
+##this particular syntax has been necessary since it was impossible to give the function the trait name it was computing.
+GO_enrichment <- function(list) {
+  lapply(seq_along(list), function(i) {
+  GOenrichment(list[[i]], names(list)[i])
+  })
+}
+
+GMT_parsing <- function(list) {
+  lapply(seq_along(list), function(i) {
+    GMT(list[[i]], names(list)[i])
+  })
+}
+
+#Run the complete function
+GO_enrichment(social_not_aculeata)
+GMT_parsing(list_notext_11)
+
+#search for specific gene
+genesOfInterest <- as.character(notext_biggest$V1) #as vector not character 
+geneList <- factor(as.integer(geneUniverse %in% genesOfInterest))
+names(geneList) <- geneUniverse
+topGO <- new("topGOdata", ontology="BP", allGenes=geneList, annot = annFUN.gene2GO, gene2GO = gene_universe)
+print(intersect(genesInTerm(topGO, "GO:0051289")$'GO:0051289', notext_biggest$V1)) #to investigate which genes are annotated with a particular GO term
+```
+
 -----
 
 > **diamond_samuel.tsv** è il risultato del blast di Diamond (eseguito sul database di NCBI) dove sono state scelti 25 risultati per ogni proteina
@@ -76,6 +219,7 @@ L'arricchimento vero e proprio viene eseguito tramite il programma R-studio, dov
 > **longest_samuel.tsv** è il file dell'annotazione funzionale eseguito da Panther
 
 > **diamond_samuel_names.tsv** è il file di mapping/rifinituare che contiene i nomi delle proteine associate agli ortogruppi
+
 
 
 
