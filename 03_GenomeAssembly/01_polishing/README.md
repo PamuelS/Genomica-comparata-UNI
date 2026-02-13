@@ -57,7 +57,7 @@ Un metodo utilizzato per verificare la contiguità relativa all'assemblaggio ott
 
 ```bash
 #|assembly|
-assembly-stats Anoste_pol.fasta > Anoste_pol.stats
+assembly-stats Anoste_pol.fasta > Anoste_pol.N50
 ```
 
 ##### Busco
