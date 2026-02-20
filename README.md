@@ -1,6 +1,8 @@
 # Genomica-comparata-UNI
 Questa repository contiene tutta la successione di comandi utilizzati per l'ottenimento di un assemblaggio contig-level, e conseguente annotazione, del genoma di *Anopheles stephensi*. 
 Al termine dell'assamblaggio è stoto creato un dataset di 6 specie (zanzare) per eseguire una comparazione genomica, per tentare di identificare quali sequenze geniche potessero spiegare il passaggio ad uno stile di vita nettarivoro in alcune specie di zanzare della famiglia Culicidae.
+
+
 0. Organizzazione
    - [Raccolta dati](./00_data)
    - [Ambienti di lavoro](./01_EnvironmentInformation)
